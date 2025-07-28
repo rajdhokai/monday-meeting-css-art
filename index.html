@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monday Morning Meeting - Office Culture CSS Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d1e7dd 100%);
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        .office-scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            transform: scale(0.9);
+            transform-origin: center;
+        }
+
+        /* Conference Room */
+        .conference-room {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 70%;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Meeting Table */
+        .meeting-table {
+            position: absolute;
+            top: 40%;
+            left: 20%;
+            width: 60%;
+            height: 30%;
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            border-radius: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .table-surface {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            width: calc(100% - 40px);
+            height: 40px;
+            background: linear-gradient(45deg, #daa520, #b8860b);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Laptops on table */
+        .laptop {
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            top: 45%;
+            background: #2c3e50;
+            border-radius: 8px;
+            transform: perspective(100px) rotateX(15deg);
+        }
+
+        .laptop:nth-child(1) { left: 25%; }
+        .laptop:nth-child(2) { left: 45%; }
+        .laptop:nth-child(3) { left: 65%; }
+
+        .laptop::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(145deg, #34495e, #2c3e50);
+            border-radius: 8px 8px 0 0;
+            transform-origin: bottom;
+            transform: rotateX(-20deg);
+        }
+
+        .laptop::after {
+            content: '';
+            position: absolute;
+            top: -45px;
+            left: 5px;
+            width: 70px;
+            height: 40px;
+            background: #0f0f23;
+            border-radius: 4px;
+        }
+
+        /* Coffee Cups */
+        .coffee-cup {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            border-radius: 0 0 15px 15px;
+            top: 42%;
+        }
+
+        .coffee-cup:nth-child(4) { left: 30%; }
+        .coffee-cup:nth-child(5) { left: 50%; }
+        .coffee-cup:nth-child(6) { left: 70%; }
+
+        .coffee-cup::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -8px;
+            width: 12px;
+            height: 20px;
+            border: 3px solid #8b4513;
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .coffee-cup::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 26px;
+            height: 8px;
+            background: #3e2723;
+            border-radius: 50%;
+        }
+
+        /* People around the table */
+        .person {
+            position: absolute;
+            width: 60px;
+            height: 120px;
+        }
+
+        /* Boss at head of table */
+        .boss {
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .boss .head {
+            width: 40px;
+            height: 40px;
+            background: #fdbcb4;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .boss .head::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            width: 30px;
+            height: 20px;
+            background: #8b4513;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .boss .body {
+            width: 50px;
+            height: 70px;
+            background: linear-gradient(45deg, #1a237e, #283593);
+            margin: 5px auto;
+            border-radius: 25px 25px 0 0;
+            position: relative;
+        }
+
+        .boss .arms {
+            position: absolute;
+            top: 20px;
+            left: -15px;
+            width: 80px;
+            height: 30px;
+        }
+
+        .boss .arms::before,
+        .boss .arms::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 8px;
+            background: #fdbcb4;
+            border-radius: 4px;
+        }
+
+        .boss .arms::before {
+            left: 0;
+            transform: rotate(-30deg);
+        }
+
+        .boss .arms::after {
+            right: 0;
+            transform: rotate(30deg);
+        }
+
+        /* Employees */
+        .employee {
+            width: 50px;
+            height: 100px;
+        }
+
+        .employee1 {
+            top: 35%;
+            left: 15%;
+        }
+
+        .employee2 {
+            top: 35%;
+            right: 15%;
+        }
+
+        .employee3 {
+            bottom: 25%;
+            left: 25%;
+        }
+
+        .employee4 {
+            bottom: 25%;
+            right: 25%;
+        }
+
+        .employee .head {
+            width: 35px;
+            height: 35px;
+            background: #fdbcb4;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .employee1 .head::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 3px;
+            width: 29px;
+            height: 18px;
+            background: #654321;
+            border-radius: 15px;
+        }
+
+        .employee2 .head::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 8px;
+            width: 19px;
+            height: 25px;
+            background: #2c1810;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .employee .body {
+            width: 40px;
+            height: 60px;
+            background: #6c757d;
+            margin: 3px auto;
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* Speech bubbles */
+        .speech-bubble {
+            position: absolute;
+            background: white;
+            border-radius: 20px;
+            padding: 10px 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+            max-width: 150px;
+            text-align: center;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .bubble1 {
+            top: 5%;
+            left: 35%;
+            background: #ffeb3b;
+        }
+
+        .bubble1::after {
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top-color: #ffeb3b;
+        }
+
+        .bubble2 {
+            top: 30%;
+            left: 5%;
+            background: #e3f2fd;
+        }
+
+        .bubble2::after {
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left-color: #e3f2fd;
+        }
+
+        .bubble3 {
+            top: 30%;
+            right: 5%;
+            background: #f3e5f5;
+        }
+
+        .bubble3::after {
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-right-color: #f3e5f5;
+        }
+
+        .bubble4 {
+            bottom: 15%;
+            left: 10%;
+            background: #e8f5e8;
+        }
+
+        .bubble4::after {
+            top: -20px;
+            left: 30px;
+            border-bottom-color: #e8f5e8;
+        }
+
+        /* Whiteboard */
+        .whiteboard {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            height: 120px;
+            background: white;
+            border: 8px solid #8d6e63;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .whiteboard-content {
+            padding: 20px;
+            font-size: 14px;
+            color: #1976d2;
+            font-weight: bold;
+        }
+
+        .chart {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 160px;
+            height: 60px;
+        }
+
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(to top, #f44336, #ff9800);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .chart-bar:nth-child(1) { left: 20px; height: 20px; }
+        .chart-bar:nth-child(2) { left: 45px; height: 35px; }
+        .chart-bar:nth-child(3) { left: 70px; height: 50px; }
+        .chart-bar:nth-child(4) { left: 95px; height: 25px; }
+        .chart-bar:nth-child(5) { left: 120px; height: 45px; }
+
+        /* Clock on wall */
+        .clock {
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 6px solid #333;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .clock::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 25px;
+            background: #333;
+            transform: translate(-50%, -100%) rotate(90deg);
+            border-radius: 1px;
+        }
+
+        .clock::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: #f44336;
+            transform: translate(-50%, -100%) rotate(180deg);
+            border-radius: 1px;
+        }
+
+        /* Floating motivation */
+        .motivation {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2e7d32;
+            background: rgba(255,255,255,0.8);
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Stress indicators */
+        .stress-lines {
+            position: absolute;
+            top: 15%;
+            right: 25%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .stress-lines::before,
+        .stress-lines::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: #f44336;
+            border-radius: 1px;
+        }
+
+        .stress-lines::before {
+            top: 5px;
+            left: 0;
+            transform: rotate(15deg);
+        }
+
+        .stress-lines::after {
+            top: 15px;
+            right: 0;
+            transform: rotate(-15deg);
+        }
+
+        /* Coffee stain */
+        .coffee-stain {
+            position: absolute;
+            bottom: 30%;
+            right: 30%;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #8d6e63 30%, rgba(141,110,99,0.3) 70%);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="office-scene">
+        <div class="conference-room">
+            <!-- Meeting table -->
+            <div class="meeting-table">
+                <div class="table-surface"></div>
+                <div class="laptop"></div>
+                <div class="laptop"></div>
+                <div class="laptop"></div>
+                <div class="coffee-cup"></div>
+                <div class="coffee-cup"></div>
+                <div class="coffee-cup"></div>
+            </div>
+
+            <!-- Boss -->
+            <div class="person boss">
+                <div class="head"></div>
+                <div class="body">
+                    <div class="arms"></div>
+                </div>
+            </div>
+
+            <!-- Employees -->
+            <div class="person employee employee1">
+                <div class="head"></div>
+                <div class="body"></div>
+            </div>
+
+            <div class="person employee employee2">
+                <div class="head"></div>
+                <div class="body"></div>
+            </div>
+
+            <div class="person employee employee3">
+                <div class="head"></div>
+                <div class="body"></div>
+            </div>
+
+            <div class="person employee employee4">
+                <div class="head"></div>
+                <div class="body"></div>
+            </div>
+
+            <!-- Speech bubbles -->
+            <div class="speech-bubble bubble1">"Let's circle back on this..."</div>
+            <div class="speech-bubble bubble2">"Can we take this offline?"</div>
+            <div class="speech-bubble bubble3">"I'll ping you later"</div>
+            <div class="speech-bubble bubble4">"Low hanging fruit"</div>
+
+            <!-- Whiteboard -->
+            <div class="whiteboard">
+                <div class="whiteboard-content">
+                    Q3 SYNERGY
+                    <div class="chart">
+                        <div class="chart-bar"></div>
+                        <div class="chart-bar"></div>
+                        <div class="chart-bar"></div>
+                        <div class="chart-bar"></div>
+                        <div class="chart-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clock -->
+            <div class="clock"></div>
+
+            <!-- Motivation -->
+            <div class="motivation">TEAMWORK!</div>
+
+            <!-- Stress indicators -->
+            <div class="stress-lines"></div>
+
+            <!-- Coffee stain -->
+            <div class="coffee-stain"></div>
+        </div>
+    </div>
+</body>
+</html>
